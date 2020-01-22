@@ -1,0 +1,1077 @@
+---
+store: '{{ store.store }}'
+network_id: ''
+bandwidthLimits:
+  wan1:
+    limitUp: {{ store.wan1_up }}
+    limitDown: {{ store.wan1_down }}
+  wan2:
+    limitUp: {{ store.wan2_up }}
+    limitDown: {{ store.wan2_down }}
+  cellular:
+    limitUp: {{ store.cell_up }}
+    limitDown: {{ store.cell_down }}
+
+inventory:
+  devicelist: [MX1, MS1, MR1, MR2]
+  MX1:
+    name: '{{ store.country|lower }}dg010{{ store.store }}'
+    serial: {{ store.mx1_serial }}
+    model: {{ store.mx1_model }}
+    type: appliance
+  MS1:
+    name: '{{ store.country|lower }}sw010{{ store.store }}'
+    serial: {{ store.ms1_serial }}
+    model: {{ store.ms1_model }}
+    type: switch
+  MR1:
+    name: '{{ store.country|lower }}ap010{{ store.store }}'
+    serial: {{ store.mr1_serial }}
+    model: {{ store.mr1_model }}
+    type: wireless
+  MR2:
+    name: '{{ store.country|lower }}ap020{{ store.store }}'
+    serial: {{ store.mr2_serial }}
+    model: {{ store.mr2_model }}
+    type: wireless
+
+switchports:
+  Port1:
+   name: "MX Uplink"
+   tags: uplink
+   enabled: true
+   poeEnabled: true
+   type: trunk
+   vlan: 1
+   voiceVlan: null
+   allowedVlans: "1-2,99-102,200,250"
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port2:
+   name: Reserved
+   tags: "mgmt reserved"
+   enabled: false
+   poeEnabled: true
+   type: access
+   vlan: 1
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port3:
+   name: "Uplink to {{ store.country|lower }}ap010{{ store.store }}"
+   tags: "mgmt {{ store.country|lower }}ap01"
+   enabled: true
+   poeEnabled: true
+   type: trunk
+   vlan: 1
+   voiceVlan: null
+   allowedVlans: "1-2,99-102,200,250"
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port4:
+   name: "Uplink to {{ store.country|lower }}ap020{{ store.store }}"
+   tags: "mgmt {{ store.country|lower }}ap02"
+   enabled: true
+   poeEnabled: true
+   type: trunk
+   vlan: 1
+   voiceVlan: null
+   allowedVlans: "1-2,99-102,200,250"
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port5:
+   name: "Uplink to ap04"
+   tags: "mgmt {{ store.country|lower }}ap03"
+   enabled: false
+   poeEnabled: true
+   type: trunk
+   vlan: 1
+   voiceVlan: null
+   allowedVlans: "1-2,99-102,200,250"
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port6:
+   name: "Uplink to ap04"
+   tags: "mgmt {{ store.country|lower }}ap04"
+   enabled: false
+   poeEnabled: true
+   type: trunk
+   vlan: 1
+   voiceVlan: null
+   allowedVlans: "1-2,99-102,200,250"
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port7:
+   name: UNASSIGNED
+   tags: "mgmt unused"
+   enabled: false
+   poeEnabled: true
+   type: access
+   vlan: 1
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port8:
+   name: UNASSIGNED
+   tags: "mgmt unused"
+   enabled: false
+   poeEnabled: true
+   type: access
+   vlan: 1
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port9:
+   name: BOPC
+   tags: "access pos"
+   enabled: true
+   poeEnabled: true
+   type: access
+   vlan: 100
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port10:
+   name: UNASSIGNED
+   tags: "access pos"
+   enabled: false
+   poeEnabled: true
+   type: access
+   vlan: 100
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port11:
+   name: REG1
+   tags: "access pos"
+   enabled: true
+   poeEnabled: true
+   type: access
+   vlan: 100
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port12:
+   name: REG2
+   tags: "access pos"
+   enabled: true
+   poeEnabled: true
+   type: access
+   vlan: 100
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port13:
+   name: REG3
+   tags: "access pos"
+   enabled: true
+   poeEnabled: true
+   type: access
+   vlan: 100
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+  stickyMacWhitelistLimit: null
+
+  Port14:
+   name: "REG4 / ENHANCED POS -DRIVE THRU"
+   tags: "access pos"
+   enabled: true
+   poeEnabled: true
+   type: access
+   vlan: 100
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port15:
+   name: "CUPLABELER 1 / BAR 1"
+   tags: "access pos"
+   enabled: true
+   poeEnabled: true
+   type: access
+   vlan: 100
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port16:
+   name: "CUPLABELER 2 / COLD BEVERAGE"
+   tags: "access pos"
+   enabled: true
+   poeEnabled: true
+   type: access
+   vlan: 100
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port17:
+   name: "CUPLABELER 3 BAR 3"
+   tags: "access pos"
+   enabled: true
+   poeEnabled: true
+   type: access
+   vlan: 100
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port18:
+   name: "CUPLABELER 4 WARMING"
+   tags: "access pos"
+   enabled: true
+   poeEnabled: true
+   type: access
+   vlan: 100
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port19:
+   name: "BUMPBAR 1 / BARISTA SCREEN"
+   tags: "access pos"
+   enabled: true
+   poeEnabled: true
+   type: access
+   vlan: 100
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port20:
+   name: "BUMPBAR 2 / BEAN SCREEN"
+   tags: "access pos"
+   enabled: true
+   poeEnabled: true
+   type: access
+   vlan: 100
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port21:
+   name: "STARBUCKS PRODUCTION CONTROLLER 1"
+   tags: "access pos"
+   enabled: true
+   poeEnabled: true
+   type: access
+   vlan: 100
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port22:
+   name: "RESERVE BAR PRINTER / EOP CUPLABELER"
+   tags: "access pos"
+   enabled: true
+   poeEnabled: true
+   type: access
+   vlan: 100
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port23:
+   name: "STARBUCKS PRODUCTION CONTROLLER 2"
+   tags: "access pos"
+   enabled: true
+   poeEnabled: true
+   type: access
+   vlan: 100
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port24:
+   name: "HANDHELD POS 2 CRADLE"
+   tags: "access pos"
+   enabled: true
+   poeEnabled: true
+   type: access
+   vlan: 100
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port25:
+   name: "BAR 2 MOP LABELER"
+   tags: "access pos"
+   enabled: true
+   poeEnabled: true
+   type: access
+   vlan: 100
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port26:
+   name: "MOP CHIT PRINTER"
+   tags: "access pos"
+   enabled: true
+   poeEnabled: true
+   type: access
+   vlan: 100
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port27:
+   name: "MOP CUPLABELER 2"
+   tags: "access pos"
+   enabled: true
+   poeEnabled: true
+   type: access
+   vlan: 100
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port28:
+   name: UNASSIGNED
+   tags: "access pos"
+   enabled: false
+   poeEnabled: true
+   type: access
+   vlan: 100
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+ Port29:
+   name: "ALARM PANEL"
+   tags: "access data"
+   enabled: true
+   poeEnabled: true
+   type: access
+   vlan: 101
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port30:
+   name: "GENETEC DVR/NVR"
+   tags: "access data"
+   enabled: true
+   poeEnabled: true
+   type: access
+   vlan: 101
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port31:
+   name: "IP CAMERA 1 / ENCODER"
+   tags: "access data"
+   enabled: true
+   poeEnabled: true
+   type: access
+   vlan: 101
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port32:
+   name: "IP CAMERA 2 / ENCODER"
+   tags: "access data"
+   enabled: true
+   poeEnabled: true
+   type: access
+   vlan: 101
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port33:
+   name: "IP CAMERA 3"
+   tags: "access data"
+   enabled: true
+   poeEnabled: true
+   type: access
+   vlan: 101
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port34:
+   name: "IP CAMERA 4"
+   tags: "access data"
+   enabled: true
+   poeEnabled: true
+   type: access
+   vlan: 101
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port35:
+   name: "IP CAMERA 5"
+   tags: "access data"
+   enabled: true
+   poeEnabled: true
+   type: access
+   vlan: 101
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port36:
+   name: "DT TIMER TSP"
+   tags: "access data"
+   enabled: true
+   poeEnabled: true
+   type: access
+   vlan: 101
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port37:
+   name: "DT TIMER CU"
+   tags: "access data"
+   enabled: true
+   poeEnabled: true
+   type: access
+   vlan: 101
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port38:
+   name: "EMS - (SURVEYOR)"
+   tags: "access data"
+   enabled: true
+   poeEnabled: true
+   type: access
+   vlan: 101
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port39:
+   name: "CLOVER 1"
+   tags: "access data"
+   enabled: true
+   poeEnabled: true
+   type: access
+   vlan: 101
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port40:
+   name: "CLOVER 2"
+   tags: "access data"
+   enabled: true
+   poeEnabled: true
+   type: access
+   vlan: 101
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port41:
+   name: "DIGITAL MENU LEGACY / TAPWALL SCRN"
+   tags: "access data"
+   enabled: true
+   poeEnabled: true
+   type: access
+   vlan: 101
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port42:
+   name: "WIRELESS CHARGER"
+   tags: "access data"
+   enabled: true
+   poeEnabled: true
+   type: access
+   vlan: 101
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port43:
+   name: UPS
+   tags: "access data"
+   enabled: true
+   poeEnabled: true
+   type: access
+   vlan: 101
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port44:
+   name: UNASSIGNED
+   tags: "access data"
+   enabled: false
+   poeEnabled: true
+   type: access
+   vlan: 101
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port45:
+   name: INTERNET
+   tags: "access inet"
+   enabled: true
+   poeEnabled: true
+   type: access
+   vlan: 102
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port46:
+   name: INTERNET
+   tags: "access inet"
+   enabled: true
+   poeEnabled: true
+   type: access
+   vlan: 102
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port47:
+   name: CURIO
+   tags: "access inet"
+   enabled: true
+   poeEnabled: true
+   type: access
+   vlan: 102
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port48:
+   name: INTERNET
+   tags: "access inet"
+   enabled: true
+   poeEnabled: true
+   type: access
+   vlan: 102
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port49:
+   name: UNASSIGNED
+   tags: "mgmt sfp unused"
+   enabled: false
+   poeEnabled: false
+   type: access
+   vlan: 1
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port50:
+   name: UNASSIGNED
+   tags: "mgmt sfp unused"
+   enabled: false
+   poeEnabled: false
+   type: access
+   vlan: 1
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port51:
+   name: UNASSIGNED
+   tags: "mgmt sfp unused"
+   enabled: false
+   poeEnabled: false
+   type: access
+   vlan: 1
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
+
+  Port52:
+   name: UNASSIGNED
+   tags: "mgmt sfp unused"
+   enabled: false
+   poeEnabled: false
+   type: access
+   vlan: 1
+   voiceVlan: null
+   allowedVlans: all
+   isolationEnabled: false
+   rstpEnabled: true
+   stpGuard: disabled
+   accessPolicyNumber: null
+   linkNegotiation: "Auto negotiate"
+   portScheduleId: null
+   udld: "Alert only"
+   macWhitelist: null
+   stickyMacWhitelist: null
+   stickyMacWhitelistLimit: null
